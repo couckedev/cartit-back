@@ -1,10 +1,14 @@
 const IngredientService = require('../services/IngredientService')
 
-class HomeController {
-    async index(request,response) {
-        IngredientService.create();
-        return response.json("Hello world !")
+class IngredientController {
+    async create(request,response) {
+        try{
+            await IngredientService.create(request.body);
+            return response.json("Hello world !")
+        } catch(e) {
+            return response.status(500).send(e.detail)
+        }
     }
 }
 
-module.exports = new HomeController();
+module.exports = new IngredientController();

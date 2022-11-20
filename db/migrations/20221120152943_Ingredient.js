@@ -1,7 +1,7 @@
 exports.up = function (knex) {
     return knex.schema.createTable('ingredient', function (table) {
         table.increments();
-        table.string('name');
+        table.string('name').unique();
     })
 };
 
