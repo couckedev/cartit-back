@@ -1,12 +1,12 @@
 const IngredientService = require('../services/IngredientService')
 
 class IngredientController {
-    async create(request,response) {
+    async create(request,response,next) {
         try{
-            await IngredientService.create(request.body);
-            return response.json("Hello world !")
+            const created_ingredient = await IngredientService.create(request.body);
+            return response.json(created_ingredient)
         } catch(e) {
-            return response.status(500).send(e.detail)
+            return next(e.detail)
         }
     }
 }

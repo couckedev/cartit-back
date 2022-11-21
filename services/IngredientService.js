@@ -1,8 +1,8 @@
 const Ingredient = require("../dao/Ingredient");
 
 class IngredientService {    
-    async create(ingredients) {
-        return Ingredient.create(ingredients);
+    async create(ingredient) {
+        return await Ingredient.create(ingredient);
     }
 }
 

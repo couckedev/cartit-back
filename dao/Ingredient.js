@@ -1,11 +1,9 @@
 const db = require("../db/db");
 
 class Ingredient {    
-    async create(ingredients) {
-        for(const i in ingredients) {
-            ingredients[i]['id'] = await db('ingredient').insert(ingredients[i]).returning('id');
-        }
-        return ingredients;
+    async create(ingredient) {
+        const created_ingredient = await db('ingredient').insert({name: ingredient.name}).returning('*');
+        return created_ingredient[0];
     }
 }
 
